@@ -1,0 +1,29 @@
+name: "web_app"
+mode: "dev"
+port: 8080
+version: 'v0.0.1'
+start_time: "2023-01-01"
+machine_id: 1
+
+log:
+  level: "debug"
+  filename: "web_app.log"
+  max_size: 200
+  max_age: 30
+  max_backups: 7
+
+mysql:
+  host: "127.0.0.1"
+  port: 3306
+  user: "root"
+  password: "123456"
+  dbname: "sql_demo"
+  max_open_conns: 100
+  max_idle_conns: 20
+
+redis:
+  host: "127.0.0.1"
+  port: 6379
+  db: 0
+  poolsize: 100
+
