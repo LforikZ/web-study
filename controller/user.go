@@ -72,7 +72,7 @@ func LoginUp(c *gin.Context) {
 		return
 	}
 	//业务处理
-	err := service.Login(p)
+	token, err := service.Login(p)
 	if err != nil {
 		zap.L().Error("login失败", zap.Error(err))
 		if errors.Is(err, service.ErrorUserNotExit) {
@@ -82,6 +82,6 @@ func LoginUp(c *gin.Context) {
 		}
 		return
 	}
-	ResponseSuccess(c, CodeSuccess)
+	ResponseSuccess(c, token)
 	return
 }

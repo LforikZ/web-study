@@ -4,6 +4,7 @@ import (
 	"errors"
 	"web-study/dao/mysql"
 	"web-study/entity"
+	"web-study/pkg/jwt"
 	"web-study/pkg/snowflake"
 )
 
@@ -31,14 +32,16 @@ func SignUpUser(p *entity.ParamSignUp) (err error) {
 	return mysql.InsertUser(&user)
 }
 
-func Login(p *entity.ParamLoginUp) (err error) {
-	result := mysql.SelectByUsername(p.Username)
-	if result.UserID == 0 {
-		return ErrorUserNotExit
+func Login(p *entity.ParamLoginUp) (token string, err error) {
+	user := mysql.SelectByUsername(p.Username)
+	if user.UserID == 0 {
+		return "", ErrorUserNotExit
 	}
 	password := mysql.Md5Password(p.Username, p.Password)
-	if password != result.Password {
-		return ErrorInvalidPassword
+	if password != user.Password {
+		return "", ErrorInvalidPassword
 	}
-	return
+	//生成jwt
+	return jwt.GenToken(user.UserName, user.UserID)
+
 }
