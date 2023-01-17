@@ -59,6 +59,7 @@ func main() {
 		fmt.Printf("init translate failed，err：%v\n", err)
 		return
 	}
+
 	//6.注册路由
 	r := routes.Setup()
 
