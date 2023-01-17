@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60372a4a-986e-4f51-b433-4c3023b189bd" name="变更" comment="2023/1/16">
+    <list default="true" id="60372a4a-986e-4f51-b433-4c3023b189bd" name="变更" comment="2023/1/16 zihao_Li">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/userController.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/mysql/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/userDao.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/mysql/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/userDao_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/jwt/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/jwt/jwt.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/userService.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_app.log" beforeDir="false" afterPath="$PROJECT_DIR$/web_app.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +116,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="2023/1/16" />
-    <option name="LAST_COMMIT_MESSAGE" value="2023/1/16" />
+    <MESSAGE value="2023/1/16 zihao_Li" />
+    <option name="LAST_COMMIT_MESSAGE" value="2023/1/16 zihao_Li" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

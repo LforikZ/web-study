@@ -23,7 +23,7 @@ type MyClaims struct {
 }
 
 // GenToken 生成JWT
-func GenToken(username string, userID int64) (aToken string, err error) {
+func GenToken(username string, userID int64) (string, error) {
 	// 创建一个我们自己的声明
 	c := MyClaims{
 		userID, // 自定义字段
@@ -34,7 +34,7 @@ func GenToken(username string, userID int64) (aToken string, err error) {
 		},
 	}
 	// 使用指定的签名方法创建签名对象 atoken
-	aToken, err = jwt.NewWithClaims(jwt.SigningMethodHS256, c).SignedString(MySecret)
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, c)
 
 	//TODO: 需要rToken时放开
 	//// refresh token 不需要任何自定义数据
@@ -43,22 +43,23 @@ func GenToken(username string, userID int64) (aToken string, err error) {
 	//	Issuer:    "web-study",                             //签发人
 	//}).SignedString(MySecret)
 
-	return
+	return token.SignedString(MySecret)
 }
 
 // ParseToken 解析JWT
 func ParseToken(tokenString string) (claims *MyClaims, err error) {
 	// 解析token
-	var token *jwt.Token
-	claims = new(MyClaims)
-	token, err = jwt.ParseWithClaims(tokenString, claims, Keyfunc)
+	var mc = new(MyClaims)
+	token, err := jwt.ParseWithClaims(tokenString, mc, func(token *jwt.Token) (i interface{}, err error) {
+		return MySecret, nil
+	})
 	if err != nil {
 		return nil, err
 	}
-	if !token.Valid { //校验token
-		err = errors.New("invalid token")
+	if token.Valid { // 校验token
+		return mc, nil
 	}
-	return
+	return nil, errors.New("invalid token")
 }
 
 // TODO: 这个功能没有实现，学习完之后需要自己完成
