@@ -23,7 +23,7 @@ type MyClaims struct {
 }
 
 // GenToken 生成JWT
-func GenToken(username string, userID int64) (aToken, rToken string, err error) {
+func GenToken(username string, userID int64) (aToken string, err error) {
 	// 创建一个我们自己的声明
 	c := MyClaims{
 		userID, // 自定义字段
@@ -36,11 +36,12 @@ func GenToken(username string, userID int64) (aToken, rToken string, err error) 
 	// 使用指定的签名方法创建签名对象 atoken
 	aToken, err = jwt.NewWithClaims(jwt.SigningMethodHS256, c).SignedString(MySecret)
 
-	// refresh token 不需要任何自定义数据
-	rToken, err = jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.StandardClaims{
-		ExpiresAt: time.Now().Add(time.Second * 30).Unix(), //过期时间 30天
-		Issuer:    "web-study",                             //签发人
-	}).SignedString(MySecret)
+	//TODO: 需要rToken时放开
+	//// refresh token 不需要任何自定义数据
+	//rToken, err = jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.StandardClaims{
+	//	ExpiresAt: time.Now().Add(time.Second * 30).Unix(), //过期时间 30天
+	//	Issuer:    "web-study",                             //签发人
+	//}).SignedString(MySecret)
 
 	return
 }
@@ -61,7 +62,7 @@ func ParseToken(tokenString string) (claims *MyClaims, err error) {
 }
 
 // TODO: 这个功能没有实现，学习完之后需要自己完成
-func RefreshToken(aToken, rToken string) (newAToken, newRToken string, err error) {
+func RefreshToken(aToken, rToken string) (newAToken string, err error) {
 	// refresh token 无效直接返回
 	if _, err = jwt.Parse(rToken, Keyfunc); err != nil {
 		return
