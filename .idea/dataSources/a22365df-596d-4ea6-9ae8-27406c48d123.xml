@@ -1008,50 +1008,98 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Plugin>caching_sha2_password</Plugin>
     </user>
     <user id="292" parent="1" name="root"/>
-    <table id="293" parent="285" name="users">
+    <table id="293" parent="285" name="communities">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <column id="294" parent="293" name="id">
+    <table id="294" parent="285" name="users">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <column id="295" parent="293" name="id">
       <AutoIncrement>1</AutoIncrement>
-      <DasType>bigint|0s</DasType>
+      <DasType>bigint unsigned|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="295" parent="293" name="user_id">
-      <DasType>bigint|0s</DasType>
+    <column id="296" parent="293" name="created_at">
+      <DasType>datetime(3)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="296" parent="293" name="user_name">
-      <DasType>longtext|0s</DasType>
+    <column id="297" parent="293" name="updated_at">
+      <DasType>datetime(3)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="297" parent="293" name="password">
-      <DasType>longtext|0s</DasType>
+    <column id="298" parent="293" name="deleted_at">
+      <DasType>datetime(3)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="298" parent="293" name="email">
-      <DasType>longtext|0s</DasType>
+    <column id="299" parent="293" name="community_id">
+      <DasType>bigint|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="299" parent="293" name="gender">
-      <DasType>bigint|0s</DasType>
+    <column id="300" parent="293" name="community_name">
+      <DasType>longtext|0s</DasType>
       <Position>6</Position>
     </column>
-    <column id="300" parent="293" name="create_time">
-      <DasType>datetime(3)|0s</DasType>
+    <column id="301" parent="293" name="introduction">
+      <DasType>longtext|0s</DasType>
       <Position>7</Position>
-    </column>
-    <column id="301" parent="293" name="update_time">
-      <DasType>datetime(3)|0s</DasType>
-      <Position>8</Position>
     </column>
     <index id="302" parent="293" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="303" parent="293" name="PRIMARY">
+    <index id="303" parent="293" name="idx_communities_deleted_at">
+      <ColNames>deleted_at</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="304" parent="293" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="305" parent="294" name="id">
+      <AutoIncrement>3</AutoIncrement>
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="306" parent="294" name="user_id">
+      <DasType>bigint|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="307" parent="294" name="user_name">
+      <DasType>longtext|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="308" parent="294" name="password">
+      <DasType>longtext|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="309" parent="294" name="email">
+      <DasType>longtext|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <column id="310" parent="294" name="gender">
+      <DasType>bigint|0s</DasType>
+      <Position>6</Position>
+    </column>
+    <column id="311" parent="294" name="create_time">
+      <DasType>datetime(3)|0s</DasType>
+      <Position>7</Position>
+    </column>
+    <column id="312" parent="294" name="update_time">
+      <DasType>datetime(3)|0s</DasType>
+      <Position>8</Position>
+    </column>
+    <index id="313" parent="294" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="314" parent="294" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

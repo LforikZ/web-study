@@ -27,7 +27,7 @@ func Init(cfg *settings.MySQLConfig) error {
 		return nil
 	}
 	//TODO:将表配置到数据库中去
-	if err := db.AutoMigrate(&User{}); err != nil {
+	if err := db.AutoMigrate(&User{}, &Community{}); err != nil {
 		zap.L().Error("AutoMigrate DB failed", zap.Error(err))
 		return nil
 	}

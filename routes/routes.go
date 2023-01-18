@@ -53,5 +53,8 @@ func Setup() *gin.Engine {
 	//登录功能
 	r.POST("/login", controller.LoginUp)
 
+	//向社区插入数据
+	r.POST("/insert_community", controller.InsertComData)
+
 	return r
 }

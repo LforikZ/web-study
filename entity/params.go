@@ -11,3 +11,9 @@ type ParamLoginUp struct {
 	Username string `json:"username" binding:"required"`
 	Password string `json:"password" binding:"required"`
 }
+
+type ParamInsertCommunity struct {
+	CommunityID   int    `json:"communityID" gorm:"communityId" binding:"required"`
+	CommunityName string `json:"communityName" gorm:"communityName" binding:"required"`
+	Introduction  string `json:"introduction" gorm:"introduction" binding:"required"`
+}
