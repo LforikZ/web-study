@@ -1039,7 +1039,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>5</Position>
     </column>
     <column id="300" parent="293" name="community_name">
-      <DasType>longtext|0s</DasType>
+      <DasType>varchar(191)|0s</DasType>
       <Position>6</Position>
     </column>
     <column id="301" parent="293" name="introduction">
@@ -1051,55 +1051,71 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="303" parent="293" name="idx_communities_deleted_at">
+    <index id="303" parent="293" name="communities_community_id_uindex">
+      <ColNames>community_id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="304" parent="293" name="idx_communities_deleted_at">
       <ColNames>deleted_at</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="304" parent="293" name="PRIMARY">
+    <index id="305" parent="293" name="idx_communities_community_id">
+      <ColNames>community_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="306" parent="293" name="idx_communities_community_name">
+      <ColNames>community_name</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="307" parent="293" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="305" parent="294" name="id">
+    <key id="308" parent="293" name="communities_community_id_uindex">
+      <UnderlyingIndexName>communities_community_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="309" parent="294" name="id">
       <AutoIncrement>3</AutoIncrement>
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="306" parent="294" name="user_id">
+    <column id="310" parent="294" name="user_id">
       <DasType>bigint|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="307" parent="294" name="user_name">
+    <column id="311" parent="294" name="user_name">
       <DasType>longtext|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="308" parent="294" name="password">
+    <column id="312" parent="294" name="password">
       <DasType>longtext|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="309" parent="294" name="email">
+    <column id="313" parent="294" name="email">
       <DasType>longtext|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="310" parent="294" name="gender">
+    <column id="314" parent="294" name="gender">
       <DasType>bigint|0s</DasType>
       <Position>6</Position>
     </column>
-    <column id="311" parent="294" name="create_time">
+    <column id="315" parent="294" name="create_time">
       <DasType>datetime(3)|0s</DasType>
       <Position>7</Position>
     </column>
-    <column id="312" parent="294" name="update_time">
+    <column id="316" parent="294" name="update_time">
       <DasType>datetime(3)|0s</DasType>
       <Position>8</Position>
     </column>
-    <index id="313" parent="294" name="PRIMARY">
+    <index id="317" parent="294" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="314" parent="294" name="PRIMARY">
+    <key id="318" parent="294" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

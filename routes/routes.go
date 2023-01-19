@@ -47,14 +47,20 @@ func Setup() *gin.Engine {
 		})
 	})
 
-	//注册用户
-	r.POST("/signup", controller.SignUpUser)
+	user := r.Group("/user")
+	{
+		//注册用户
+		user.POST("/signup", controller.SignUpUser)
+		//登录功能
+		user.POST("/login", controller.LoginUp)
+	}
 
-	//登录功能
-	r.POST("/login", controller.LoginUp)
-
-	//向社区插入数据
-	r.POST("/insert_community", controller.InsertComData)
-
+	community := r.Group("/comunity")
+	{
+		//向社区插入数据
+		community.POST("/insert", controller.InsertComData)
+		//获取所有社区
+		community.GET("/list", controller.GetCommunityList)
+	}
 	return r
 }

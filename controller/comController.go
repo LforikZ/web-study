@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"errors"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
@@ -27,9 +28,24 @@ func InsertComData(c *gin.Context) {
 	}
 	//2、业务处理
 	if err := service.InsertComData(p); err != nil {
+		if errors.Is(err, service.ErrorComIDExit) {
+			ResponseError(c, CodeComIDExit)
+			return
+		}
+		if errors.Is(err, service.ErrorComNameExit) {
+			ResponseError(c, CodeComNameExit)
+			return
+		}
+		ResponseErrorWithMsg(c, CodeInvalidParam, err)
 		return
 	}
 	//3、返回响应
 	ResponseSuccess(c, CodeSuccess)
+	return
+}
+
+func GetCommunityList(c *gin.Context) {
+	list := service.GetCommunityList()
+	ResponseSuccess(c, list)
 	return
 }
