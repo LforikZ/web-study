@@ -13,7 +13,6 @@ import (
 	"web-study/controller"
 	"web-study/dao/mysql"
 	"web-study/dao/redis"
-	"web-study/logger"
 	"web-study/pkg/snowflake"
 	"web-study/routes"
 	"web-study/settings"
@@ -26,13 +25,13 @@ func main() {
 		return
 	}
 
-	//2.初始化日志
-	if err := logger.Init(settings.Conf.LogConfig, settings.Conf.Mode); err != nil {
-		fmt.Printf("init logger failed，err：%v\n", err)
-		return
-	}
-	defer zap.L().Sync()
-	zap.L().Debug("logger init success....")
+	////2.初始化日志
+	//if err := logger.Init(settings.Conf.LogConfig, settings.Conf.Mode); err != nil {
+	//	fmt.Printf("init logger failed，err：%v\n", err)
+	//	return
+	//}
+	//defer zap.L().Sync()
+	//zap.L().Debug("logger init success....")
 
 	//3.初始化mysql连接
 	if err := mysql.Init(settings.Conf.MySQLConfig); err != nil {

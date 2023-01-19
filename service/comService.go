@@ -25,7 +25,7 @@ func InsertComData(community *entity.ParamInsertCommunity) (err error) {
 	return
 }
 
-func GetCommunityList() interface{} {
-	list := mysql.FindList()
-	return list
+func GetCommunityList() ([]entity.ParamListCommunity, error) {
+	list, err := mysql.FindList()
+	return list, err
 }

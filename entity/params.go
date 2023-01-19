@@ -13,7 +13,12 @@ type ParamLoginUp struct {
 }
 
 type ParamInsertCommunity struct {
-	CommunityID   int    `json:"communityID" gorm:"communityId" binding:"required"`
-	CommunityName string `json:"communityName" gorm:"communityName" binding:"required"`
+	CommunityID   int    `json:"communityID" gorm:"community_id" binding:"required"`
+	CommunityName string `json:"communityName" gorm:"community_name" binding:"required"`
 	Introduction  string `json:"introduction" gorm:"introduction" binding:"required"`
+}
+
+type ParamListCommunity struct {
+	CommunityID   int    `json:"communityID" gorm:"community_id"`
+	CommunityName string `json:"communityName" gorm:"community_name"`
 }

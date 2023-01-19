@@ -1,14 +1,16 @@
 package mysql
 
 import (
+	"database/sql"
+	"go.uber.org/zap"
 	"gorm.io/gorm"
 	"web-study/entity"
 )
 
 type Community struct {
 	gorm.Model
-	CommunityID   int    `json:"communityID" gorm:"communityId;index"`
-	CommunityName string `json:"communityName" gorm:"communityName;index"`
+	CommunityID   int    `json:"communityID" gorm:"community_id;index"`
+	CommunityName string `json:"communityName" gorm:"community_name;index"`
 	Introduction  string `json:"introduction" gorm:"introduction"`
 }
 
@@ -24,10 +26,19 @@ func FindByName(name string) Community {
 	return community
 }
 
-func FindList() []Community {
+func FindList() (a []entity.ParamListCommunity, err error) {
 	var communityList []Community
-	db.Table("communities").Select("community_id", "community_name").Scan(&communityList)
-	return communityList
+	if result := db.Select("community_id", "community_name").Find(&communityList); result.Error == sql.ErrNoRows {
+		zap.L().Warn("this is no community in db")
+		err = nil
+	}
+	for _, list := range communityList {
+		var middleList entity.ParamListCommunity
+		middleList.CommunityID = list.CommunityID
+		middleList.CommunityName = list.CommunityName
+		a = append(a, middleList)
+	}
+	return a, err
 }
 
 func InsertData(result *entity.ParamInsertCommunity) (err error) {

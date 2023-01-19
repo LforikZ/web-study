@@ -5,7 +5,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"time"
 	"web-study/controller"
-	"web-study/logger"
 	"web-study/middlewares"
 )
 
@@ -36,8 +35,8 @@ func Setup() *gin.Engine {
 		//超时时间设定
 		MaxAge: 24 * time.Hour,
 	})
-	r.Use(logger.GinLogger(), logger.GinRecovery(true), mwCORS)
-
+	//r.Use(logger.GinLogger(), logger.GinRecovery(true), mwCORS)
+	r.Use(mwCORS)
 	//测试
 	r.GET("/test", middlewares.JWTAuthMiddleware(), func(context *gin.Context) {
 		//如果是登录用户，判断请求头中是否有 有效的JWT

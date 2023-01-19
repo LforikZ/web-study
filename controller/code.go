@@ -11,9 +11,9 @@ const (
 	CodeServerBusy
 	CodeInvalidToken
 	CodeNeedLogin
-
 	CodeComIDExit
 	CodeComNameExit
+	CodeGetListFiled
 )
 
 var codeMsgMap = map[ResCode]string{
@@ -25,9 +25,9 @@ var codeMsgMap = map[ResCode]string{
 	CodeServerBusy:      "服务繁忙",
 	CodeInvalidToken:    "无效token",
 	CodeNeedLogin:       "需要登录",
-
-	CodeComIDExit:   "社区ID已存在",
-	CodeComNameExit: "社区名字已存在",
+	CodeComIDExit:       "社区ID已存在",
+	CodeComNameExit:     "社区名字已存在",
+	CodeGetListFiled:    "获取数组失败",
 }
 
 func (c ResCode) Msg() string {

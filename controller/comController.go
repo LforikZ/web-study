@@ -45,7 +45,11 @@ func InsertComData(c *gin.Context) {
 }
 
 func GetCommunityList(c *gin.Context) {
-	list := service.GetCommunityList()
+	list, err := service.GetCommunityList()
+	if err != nil {
+		ResponseError(c, CodeGetListFiled)
+		return
+	}
 	ResponseSuccess(c, list)
 	return
 }
