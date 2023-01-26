@@ -12,7 +12,7 @@ var (
 )
 
 func InsertComData(community *entity.ParamInsertCommunity) (err error) {
-	if result := mysql.FindById(community.CommunityID); result.ID != 0 {
+	if result, _ := mysql.FindById(community.CommunityID); result.ID != 0 {
 		return ErrorComIDExit
 	}
 	if result := mysql.FindByName(community.CommunityName); result.ID != 0 {
@@ -28,4 +28,16 @@ func InsertComData(community *entity.ParamInsertCommunity) (err error) {
 func GetCommunityList() ([]entity.ParamListCommunity, error) {
 	list, err := mysql.FindList()
 	return list, err
+}
+
+func GetCommunityById(id int) (community entity.ParamInsertCommunity, err error) {
+	result, err := mysql.FindById(id)
+	if err != nil {
+		return community, err
+	}
+	community.CommunityID = result.CommunityID
+	community.CommunityName = result.CommunityName
+	community.Introduction = result.Introduction
+
+	return community, err
 }

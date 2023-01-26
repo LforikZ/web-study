@@ -62,7 +62,7 @@ func ParseToken(tokenString string) (claims *MyClaims, err error) {
 	return nil, errors.New("invalid token")
 }
 
-// TODO: 这个功能没有实现，学习完之后需要自己完成
+// RefreshToken TODO: 这个功能没有实现，学习完之后需要自己完成
 func RefreshToken(aToken, rToken string) (newAToken string, err error) {
 	// refresh token 无效直接返回
 	if _, err = jwt.Parse(rToken, Keyfunc); err != nil {

@@ -1,4 +1,4 @@
-package controller
+package user
 
 import (
 	"errors"
@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"go.uber.org/zap"
+	"web-study/controller"
 	"web-study/entity"
 	"web-study/service"
 )
@@ -27,10 +28,10 @@ func SignUpUser(c *gin.Context) {
 		//判断err是不是
 		errors, ok := err.(validator.ValidationErrors)
 		if !ok {
-			ResponseError(c, CodeInvalidParam)
+			controller.ResponseError(c, controller.CodeInvalidParam)
 			return
 		}
-		ResponseErrorWithMsg(c, CodeInvalidParam, errors.Translate(trans))
+		controller.ResponseErrorWithMsg(c, controller.CodeInvalidParam, errors.Translate(controller.Trans))
 		return
 	}
 
@@ -39,12 +40,12 @@ func SignUpUser(c *gin.Context) {
 	if err != nil {
 		fmt.Println(err)
 		if errors.Is(err, service.ErrorUserExit) {
-			ResponseErrorWithMsg(c, CodeUserExit, "注册失败")
+			controller.ResponseErrorWithMsg(c, controller.CodeUserExit, "注册失败")
 		}
 		return
 	}
 	//3.返回响应
-	ResponseSuccess(c, CodeSuccess)
+	controller.ResponseSuccess(c, controller.CodeSuccess)
 	return
 }
 
@@ -65,10 +66,10 @@ func LoginUp(c *gin.Context) {
 		//判断err是不是
 		er, ok := err.(validator.ValidationErrors)
 		if !ok {
-			ResponseError(c, CodeInvalidParam)
+			controller.ResponseError(c, controller.CodeInvalidParam)
 			return
 		}
-		ResponseErrorWithMsg(c, CodeInvalidParam, er.Translate(trans))
+		controller.ResponseErrorWithMsg(c, controller.CodeInvalidParam, er.Translate(controller.Trans))
 		return
 	}
 	//业务处理
@@ -76,12 +77,12 @@ func LoginUp(c *gin.Context) {
 	if err != nil {
 		zap.L().Error("login失败", zap.Error(err))
 		if errors.Is(err, service.ErrorUserNotExit) {
-			ResponseError(c, CodeUserNotExit)
+			controller.ResponseError(c, controller.CodeUserNotExit)
 		} else if errors.Is(err, service.ErrorInvalidPassword) {
-			ResponseError(c, CodeInvalidPassword)
+			controller.ResponseError(c, controller.CodeInvalidPassword)
 		}
 		return
 	}
-	ResponseSuccess(c, token)
+	controller.ResponseSuccess(c, token)
 	return
 }

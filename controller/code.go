@@ -14,6 +14,7 @@ const (
 	CodeComIDExit
 	CodeComNameExit
 	CodeGetListFiled
+	CodeGetComFiled
 )
 
 var codeMsgMap = map[ResCode]string{
@@ -28,6 +29,7 @@ var codeMsgMap = map[ResCode]string{
 	CodeComIDExit:       "社区ID已存在",
 	CodeComNameExit:     "社区名字已存在",
 	CodeGetListFiled:    "获取数组失败",
+	CodeGetComFiled:     "根据id获取社区失败",
 }
 
 func (c ResCode) Msg() string {

@@ -4,12 +4,14 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"time"
-	"web-study/controller"
+	"web-study/controller/community"
+	"web-study/controller/post"
+	"web-study/controller/user"
 	"web-study/middlewares"
 )
 
 func Setup() *gin.Engine {
-	r := gin.New()
+	r := gin.Default()
 	/*
 	   解决跨域问题:
 	   cors.New方法返回一个函数参数是c *gin.Context
@@ -46,20 +48,29 @@ func Setup() *gin.Engine {
 		})
 	})
 
-	user := r.Group("/user")
+	User := r.Group("/user")
 	{
 		//注册用户
-		user.POST("/signup", controller.SignUpUser)
+		User.POST("/signup", user.SignUpUser)
 		//登录功能
-		user.POST("/login", controller.LoginUp)
+		User.POST("/login", user.LoginUp)
 	}
 
-	community := r.Group("/comunity")
+	Community := r.Group("/community").Use(middlewares.JWTAuthMiddleware())
 	{
 		//向社区插入数据
-		community.POST("/insert", controller.InsertComData)
+		Community.POST("/insert", community.InsertComData)
 		//获取所有社区
-		community.GET("/list", controller.GetCommunityList)
+		Community.GET("/list", community.GetCommunityList)
+		//根据id获取对应社区
+		Community.GET("/:id", community.GetCommunityById)
 	}
+
+	Post := r.Group("/post").Use(middlewares.JWTAuthMiddleware())
+	{
+		//编写帖子
+		Post.POST("insert", post.InsertPostData)
+	}
+
 	return r
 }

@@ -3,19 +3,17 @@ package mysql
 import (
 	"crypto/md5"
 	"encoding/hex"
-	"time"
+	"gorm.io/gorm"
 	"web-study/entity"
 )
 
 type User struct {
-	ID         int64     `json:"id" gorm:"id"`
-	UserID     int64     `json:"userId" gorm:"user_id"`
-	UserName   string    `json:"username" gorm:"user_name"`
-	Password   string    `json:"password" gorm:"password"`
-	Email      string    `json:"email" gorm:"email"`
-	Gender     int       `json:"gender" gorm:"gender"`
-	CreateTime time.Time `json:"createTime" gorm:"create_time"`
-	UpdateTime time.Time `json:"updateTime" gorm:"update_time"`
+	gorm.Model
+	UserID   int64  `json:"userId" gorm:"user_id"`
+	Gender   int    `json:"gender" gorm:"gender"`
+	UserName string `json:"userName" gorm:"user_name"`
+	Password string `json:"password" gorm:"password"`
+	Email    string `json:"email" gorm:"email"`
 }
 
 // SelectByUsername 通过username 来查询用户是否存在
