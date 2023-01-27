@@ -8,7 +8,8 @@ import (
 )
 
 var (
-	ErrorPostData = errors.New("帖子数据不存在")
+	ErrorPostData      = errors.New("帖子数据不存在")
+	ErrorCommunityData = errors.New("社区数据不存在")
 )
 
 func CreatPost(data *entity.ParamPostData) (err error) {
@@ -41,8 +42,12 @@ func GetPostDataById(id int) (apiData entity.ApiPostData, err error) {
 	//根据用户id查用户信息
 	user := mysql.SelectUserById(int(data.AuthorID))
 	//根据社区id查社区信息
-	mysql.FindCommunityById(data.CommunityID)
+	community, err := mysql.FindCommunityById(data.CommunityID)
+	if err != nil {
+		return apiData, ErrorCommunityData
+	}
 	apiData.AuthorName = user.UserName
-
+	apiData.Community = community
+	apiData.ParamPostData = data
 	return apiData, err
 }

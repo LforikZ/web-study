@@ -48,7 +48,7 @@ func GetPostList() (a []entity.ParamPostData, err error) {
 	return a, err
 }
 
-func GetPostData(id int) (data entity.ParamPostData, err error) {
+func GetPostData(id int) (data *entity.ParamPostData, err error) {
 	var post Post
 	if result := db.Where("post_id=?", id).Find(&post); result.Error == sql.ErrNoRows {
 		zap.L().Warn("this is no post in db")

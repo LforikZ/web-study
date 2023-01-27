@@ -14,7 +14,7 @@ type Community struct {
 	Introduction  string `json:"introduction" gorm:"introduction"`
 }
 
-func FindCommunityById(communityId int) (community Community, err error) {
+func FindCommunityById(communityId int) (community *Community, err error) {
 	if result := db.Where("community_id=?", communityId).Find(&community); result.Error == sql.ErrNoRows {
 		zap.L().Warn("this is no community in db")
 		err = result.Error
