@@ -31,7 +31,7 @@ func GetPostList() (lists []entity.ParamPostData, err error) {
 	return lists, err
 }
 
-func GetPostDataById(id int) (apiData entity.ApiPostData, err error) {
+func GetPostDataById(id int) (apiData *entity.ApiPostData, err error) {
 	data, err := mysql.GetPostData(id)
 	if data.PostID == 0 {
 		return apiData, ErrorPostData
@@ -46,8 +46,12 @@ func GetPostDataById(id int) (apiData entity.ApiPostData, err error) {
 	if err != nil {
 		return apiData, ErrorCommunityData
 	}
-	apiData.AuthorName = user.UserName
-	apiData.Community = community
-	apiData.ParamPostData = data
+
+	apiData = &entity.ApiPostData{
+		AuthorName:     user.UserName,
+		ParamPostData:  data,
+		ParamCommunity: community,
+	}
+
 	return apiData, err
 }

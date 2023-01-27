@@ -375,17 +375,17 @@
 {"level":"INFO","time":"2023-01-18T18:18:15.425+0800","caller":"web-study/main.go:85","msg":"Shutdown Server ..."}
 {"level":"INFO","time":"2023-01-18T18:18:15.426+0800","caller":"web-study/main.go:93","msg":"Server exiting"}
 {"level":"DEBUG","time":"2023-01-18T18:18:18.827+0800","caller":"web-study/main.go:35","msg":"logger init success...."}
-{"level":"ERROR","time":"2023-01-18T18:22:56.315+0800","caller":"controller/comController.go:16","msg":"InsertComData() with invalid param","error":"json: cannot unmarshal string into Go struct field ParamInsertCommunity.communityID of type int"}
+{"level":"ERROR","time":"2023-01-18T18:22:56.315+0800","caller":"controller/comController.go:16","msg":"InsertComData() with invalid param","error":"json: cannot unmarshal string into Go struct field ParamCommunity.communityID of type int"}
 {"level":"INFO","time":"2023-01-18T18:22:56.315+0800","caller":"logger/logger.go:79","msg":"/insert_community","status":200,"method":"POST","path":"/insert_community","query":"","ip":"::1","user-agent":"PostmanRuntime/7.30.0","errors":"","cost":0.0005104}
 {"level":"INFO","time":"2023-01-18T18:24:34.800+0800","caller":"web-study/main.go:85","msg":"Shutdown Server ..."}
 {"level":"INFO","time":"2023-01-18T18:24:34.801+0800","caller":"web-study/main.go:93","msg":"Server exiting"}
 {"level":"DEBUG","time":"2023-01-18T18:24:38.190+0800","caller":"web-study/main.go:35","msg":"logger init success...."}
-{"level":"ERROR","time":"2023-01-18T18:25:38.668+0800","caller":"controller/comController.go:16","msg":"InsertComData() with invalid param","error":"json: cannot unmarshal string into Go struct field ParamInsertCommunity.communityID of type int"}
+{"level":"ERROR","time":"2023-01-18T18:25:38.668+0800","caller":"controller/comController.go:16","msg":"InsertComData() with invalid param","error":"json: cannot unmarshal string into Go struct field ParamCommunity.communityID of type int"}
 {"level":"INFO","time":"2023-01-18T18:25:38.668+0800","caller":"logger/logger.go:79","msg":"/insert_community","status":200,"method":"POST","path":"/insert_community","query":"","ip":"::1","user-agent":"PostmanRuntime/7.30.0","errors":"","cost":0.0005093}
 {"level":"INFO","time":"2023-01-18T18:26:07.496+0800","caller":"web-study/main.go:85","msg":"Shutdown Server ..."}
 {"level":"INFO","time":"2023-01-18T18:26:07.496+0800","caller":"web-study/main.go:93","msg":"Server exiting"}
 {"level":"DEBUG","time":"2023-01-18T18:26:10.771+0800","caller":"web-study/main.go:35","msg":"logger init success...."}
-{"level":"ERROR","time":"2023-01-18T18:26:13.619+0800","caller":"controller/comController.go:18","msg":"InsertComData() with invalid param","error":"json: cannot unmarshal string into Go struct field ParamInsertCommunity.communityID of type int"}
+{"level":"ERROR","time":"2023-01-18T18:26:13.619+0800","caller":"controller/comController.go:18","msg":"InsertComData() with invalid param","error":"json: cannot unmarshal string into Go struct field ParamCommunity.communityID of type int"}
 {"level":"INFO","time":"2023-01-18T18:26:13.619+0800","caller":"logger/logger.go:79","msg":"/insert_community","status":200,"method":"POST","path":"/insert_community","query":"","ip":"::1","user-agent":"PostmanRuntime/7.30.0","errors":"","cost":0.0002686}
 {"level":"INFO","time":"2023-01-18T18:27:16.449+0800","caller":"logger/logger.go:79","msg":"/insert_community","status":200,"method":"POST","path":"/insert_community","query":"","ip":"::1","user-agent":"PostmanRuntime/7.30.0","errors":"","cost":0.0072832}
 {"level":"INFO","time":"2023-01-18T18:28:57.790+0800","caller":"web-study/main.go:85","msg":"Shutdown Server ..."}

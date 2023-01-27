@@ -6,10 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="60372a4a-986e-4f51-b433-4c3023b189bd" name="变更" comment="2023/1/27 zihao_Li">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/community/comController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/community/comController.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dao/mysql/comDao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/comDao.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dao/mysql/postDao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/postDao.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entity/apis.go" beforeDir="false" afterPath="$PROJECT_DIR$/entity/apis.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/params.go" beforeDir="false" afterPath="$PROJECT_DIR$/entity/params.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/comService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/comService.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/postService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/postService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app.log" beforeDir="false" afterPath="$PROJECT_DIR$/web_app.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,14 +90,22 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\desketop\gin\web-study\entity" />
+      <recent name="D:\desketop\gin\web-study\dao\mysql" />
       <recent name="D:\desketop\gin\web-study\controller\user" />
       <recent name="D:\desketop\gin\web-study\controller\post" />
       <recent name="D:\desketop\gin\web-study\controller\community" />
-      <recent name="D:\desketop\gin\web-study\controller" />
-      <recent name="D:\desketop\gin\web-study" />
     </key>
   </component>
   <component name="RunManager" selected="Go 构建.go build web-study">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="web-study" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build web-study" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="web-study" />
       <working_directory value="$PROJECT_DIR$" />
@@ -101,6 +113,15 @@
       <package value="web-study" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="web-study" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
       <method v="2" />
     </configuration>
     <configuration name="web-study/dao/mysql 中的 TestFindList" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">

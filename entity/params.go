@@ -12,7 +12,7 @@ type ParamLoginUp struct {
 	Password string `json:"password" binding:"required"`
 }
 
-type ParamInsertCommunity struct {
+type ParamCommunity struct {
 	CommunityID   int    `json:"communityID" binding:"required"`
 	CommunityName string `json:"communityName"  binding:"required"`
 	Introduction  string `json:"introduction"  binding:"required"`

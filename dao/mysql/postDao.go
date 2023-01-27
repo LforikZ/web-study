@@ -55,12 +55,13 @@ func GetPostData(id int) (data *entity.ParamPostData, err error) {
 		err = result.Error
 		return data, err
 	}
-
-	data.PostID = post.PostID
-	data.Title = post.Title
-	data.CommunityID = post.CommunityID
-	data.Content = post.Content
-	data.AuthorID = post.AuthorID
+	data = &entity.ParamPostData{
+		PostID:      post.PostID,
+		AuthorID:    post.AuthorID,
+		CommunityID: post.CommunityID,
+		Title:       post.Title,
+		Content:     post.Content,
+	}
 
 	return data, err
 }

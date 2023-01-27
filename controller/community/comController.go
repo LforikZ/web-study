@@ -14,7 +14,7 @@ import (
 
 func InsertComData(c *gin.Context) {
 	//1、处理请求参数
-	p := new(entity.ParamInsertCommunity)
+	p := new(entity.ParamCommunity)
 	if err := c.ShouldBindJSON(p); err != nil {
 		//请求参数有误
 		fmt.Println(p)
