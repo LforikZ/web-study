@@ -1,6 +1,8 @@
 package mysql
 
 import (
+	"database/sql"
+	"go.uber.org/zap"
 	"gorm.io/gorm"
 	"web-study/entity"
 )
@@ -26,4 +28,39 @@ func InsertPostData(data *entity.ParamPostData) error {
 		return result.Error
 	}
 	return nil
+}
+
+func GetPostList() (a []entity.ParamPostData, err error) {
+	var post []Post
+	if result := db.Find(&post); result.Error == sql.ErrNoRows {
+		zap.L().Warn("this is no post in db")
+		err = result.Error
+	}
+	for _, list := range post {
+		var middleList entity.ParamPostData
+		middleList.PostID = list.PostID
+		middleList.Title = list.Title
+		middleList.CommunityID = list.CommunityID
+		middleList.Content = list.Content
+		middleList.AuthorID = list.AuthorID
+		a = append(a, middleList)
+	}
+	return a, err
+}
+
+func GetPostData(id int) (data entity.ParamPostData, err error) {
+	var post Post
+	if result := db.Where("post_id=?", id).Find(&post); result.Error == sql.ErrNoRows {
+		zap.L().Warn("this is no post in db")
+		err = result.Error
+		return data, err
+	}
+
+	data.PostID = post.PostID
+	data.Title = post.Title
+	data.CommunityID = post.CommunityID
+	data.Content = post.Content
+	data.AuthorID = post.AuthorID
+
+	return data, err
 }

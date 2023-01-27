@@ -14,7 +14,7 @@ type Community struct {
 	Introduction  string `json:"introduction" gorm:"introduction"`
 }
 
-func FindById(communityId int) (community Community, err error) {
+func FindCommunityById(communityId int) (community Community, err error) {
 	if result := db.Where("community_id=?", communityId).Find(&community); result.Error == sql.ErrNoRows {
 		zap.L().Warn("this is no community in db")
 		err = result.Error
@@ -22,13 +22,13 @@ func FindById(communityId int) (community Community, err error) {
 	return community, err
 }
 
-func FindByName(name string) Community {
+func FindCommunityByName(name string) Community {
 	var community Community
 	db.Where("community_name=?", name).Find(&community)
 	return community
 }
 
-func FindList() (a []entity.ParamListCommunity, err error) {
+func FindCommunityList() (a []entity.ParamListCommunity, err error) {
 	var communityList []Community
 	if result := db.Select("community_id", "community_name").Find(&communityList); result.Error == sql.ErrNoRows {
 		zap.L().Warn("this is no community in db")
@@ -43,7 +43,7 @@ func FindList() (a []entity.ParamListCommunity, err error) {
 	return a, err
 }
 
-func InsertData(result *entity.ParamInsertCommunity) (err error) {
+func InsertCommunityData(result *entity.ParamInsertCommunity) (err error) {
 	community := Community{
 		CommunityID:   result.CommunityID,
 		CommunityName: result.CommunityName,

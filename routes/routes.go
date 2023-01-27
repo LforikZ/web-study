@@ -69,7 +69,11 @@ func Setup() *gin.Engine {
 	Post := r.Group("/post").Use(middlewares.JWTAuthMiddleware())
 	{
 		//编写帖子
-		Post.POST("insert", post.InsertPostData)
+		Post.POST("/insert", post.InsertPostData)
+		//获取所有帖子
+		Post.GET("/list", post.GetPostList)
+		//单独查看一个帖子
+		Post.GET("/:id", post.GetPostData)
 	}
 
 	return r

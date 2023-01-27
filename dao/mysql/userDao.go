@@ -23,6 +23,13 @@ func SelectByUsername(username string) User {
 	return user
 }
 
+// SelectById 通过username 来查询用户是否存在
+func SelectUserById(id int) User {
+	var user User
+	db.Where("user_id=?", id).Find(&user)
+	return user
+}
+
 // InsertUser 向数据库插入一条新的用户记录
 func InsertUser(user *entity.User) (err error) {
 	//加密

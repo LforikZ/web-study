@@ -1,9 +1,14 @@
 package service
 
 import (
+	"errors"
 	"web-study/dao/mysql"
 	"web-study/entity"
 	"web-study/pkg/snowflake"
+)
+
+var (
+	ErrorPostData = errors.New("帖子数据不存在")
 )
 
 func CreatPost(data *entity.ParamPostData) (err error) {
@@ -15,4 +20,29 @@ func CreatPost(data *entity.ParamPostData) (err error) {
 	}
 	// 返回
 	return nil
+}
+
+func GetPostList() (lists []entity.ParamPostData, err error) {
+	lists, err = mysql.GetPostList()
+	if err != nil {
+		return nil, err
+	}
+	return lists, err
+}
+
+func GetPostDataById(id int) (apiData entity.ApiPostData, err error) {
+	data, err := mysql.GetPostData(id)
+	if data.PostID == 0 {
+		return apiData, ErrorPostData
+	}
+	if err != nil {
+		return apiData, ErrorPostData
+	}
+	//根据用户id查用户信息
+	user := mysql.SelectUserById(int(data.AuthorID))
+	//根据社区id查社区信息
+	mysql.FindCommunityById(data.CommunityID)
+	apiData.AuthorName = user.UserName
+
+	return apiData, err
 }

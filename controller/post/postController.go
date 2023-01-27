@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"go.uber.org/zap"
+	"strconv"
 	"web-study/controller"
 	"web-study/entity"
 	"web-study/service"
@@ -42,5 +43,38 @@ func InsertPostData(c *gin.Context) {
 	}
 	//返回响应
 	controller.ResponseSuccess(c, nil)
+	return
+}
+
+func GetPostList(c *gin.Context) {
+	list, err := service.GetPostList()
+	if err != nil {
+		fmt.Println(err)
+		controller.ResponseError(c, controller.CodeGetListFiled)
+		return
+	}
+	controller.ResponseSuccess(c, list)
+	return
+}
+
+func GetPostData(c *gin.Context) {
+	idstr := c.Param("id")
+	id, err := strconv.Atoi(idstr)
+	if err != nil {
+		zap.L().Error("get post data detail", zap.Error(err))
+		controller.ResponseError(c, controller.CodeInvalidParam)
+		return
+	}
+	if id == 0 {
+		controller.ResponseError(c, controller.CodePostNotExit)
+		return
+	}
+	data, err := service.GetPostDataById(id)
+	if err != nil {
+		zap.L().Error("service.GetPostData(id) failed", zap.Error(err))
+		controller.ResponseError(c, controller.CodeServerBusy)
+		return
+	}
+	controller.ResponseSuccess(c, data)
 	return
 }
