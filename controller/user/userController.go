@@ -6,19 +6,16 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"go.uber.org/zap"
+	"strconv"
 	"web-study/controller"
 	"web-study/entity"
 	"web-study/service"
 )
 
 // SignUpUser
-/**
- * @Author: ZiHao-Li
- * @Description: 注册用户
- * @Date: 2023/1/5 23:45
- * @Param:
- * @return:
- **/
+// @Description 注册用户
+// @Author Zihao_Li 2023-01-28 15:14:23
+// @Param c
 func SignUpUser(c *gin.Context) {
 	//1.获取参数和参数校验
 	p := new(entity.ParamSignUp)
@@ -26,12 +23,12 @@ func SignUpUser(c *gin.Context) {
 		//请求参数有误
 		zap.L().Error("SignUpUser() with invalid param", zap.Error(err))
 		//判断err是不是
-		errors, ok := err.(validator.ValidationErrors)
+		er, ok := err.(validator.ValidationErrors)
 		if !ok {
 			controller.ResponseError(c, controller.CodeInvalidParam)
 			return
 		}
-		controller.ResponseErrorWithMsg(c, controller.CodeInvalidParam, errors.Translate(controller.Trans))
+		controller.ResponseErrorWithMsg(c, controller.CodeInvalidParam, er.Translate(controller.Trans))
 		return
 	}
 
@@ -40,7 +37,7 @@ func SignUpUser(c *gin.Context) {
 	if err != nil {
 		fmt.Println(err)
 		if errors.Is(err, service.ErrorUserExit) {
-			controller.ResponseErrorWithMsg(c, controller.CodeUserExit, "注册失败")
+			controller.ResponseError(c, controller.CodeUserExit)
 		}
 		return
 	}
@@ -50,13 +47,9 @@ func SignUpUser(c *gin.Context) {
 }
 
 // LoginUp
-/**
- * @Author: ZiHao-Li
- * @Description:  登录功能
- * @Date: 2023/1/15 18:12
- * @Param:
- * @return:
- **/
+// @Description 登录用户
+// @Author Zihao_Li 2023-01-28 15:14:33
+// @Param c
 func LoginUp(c *gin.Context) {
 	//获取参数校验
 	p := new(entity.ParamLoginUp)
@@ -73,16 +66,21 @@ func LoginUp(c *gin.Context) {
 		return
 	}
 	//业务处理
-	token, err := service.Login(p)
+	apiuser, err := service.Login(p)
 	if err != nil {
 		zap.L().Error("login失败", zap.Error(err))
 		if errors.Is(err, service.ErrorUserNotExit) {
 			controller.ResponseError(c, controller.CodeUserNotExit)
 		} else if errors.Is(err, service.ErrorInvalidPassword) {
 			controller.ResponseError(c, controller.CodeInvalidPassword)
+
 		}
 		return
 	}
-	controller.ResponseSuccess(c, token)
+	controller.ResponseSuccess(c, gin.H{
+		"user_id":   strconv.FormatInt(apiuser.UserID, 10), //前端js最大识别为 2的53-1次方 int64最大为 2的63-1; 如果不处理可能会阈值
+		"user_name": apiuser.UserName,
+		"token":     apiuser.Token,
+	})
 	return
 }

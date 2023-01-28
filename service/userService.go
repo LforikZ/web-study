@@ -32,16 +32,25 @@ func SignUpUser(p *entity.ParamSignUp) (err error) {
 	return mysql.InsertUser(&user)
 }
 
-func Login(p *entity.ParamLoginUp) (token string, err error) {
+func Login(p *entity.ParamLoginUp) (apiuser *entity.ApiUserData, err error) {
 	user := mysql.SelectByUsername(p.Username)
 	if user.UserID == 0 {
-		return "", ErrorUserNotExit
+		return apiuser, ErrorUserNotExit
 	}
 	password := mysql.Md5Password(p.Username, p.Password)
 	if password != user.Password {
-		return "", ErrorInvalidPassword
+		return apiuser, ErrorInvalidPassword
 	}
 	//生成jwt
-	return jwt.GenToken(user.UserName, user.UserID)
+	token, err := jwt.GenToken(user.UserName, user.UserID)
+	if err != nil {
+		return apiuser, err
+	}
+	apiuser = &entity.ApiUserData{
+		UserID:   user.UserID,
+		UserName: user.UserName,
+		Token:    token,
+	}
+	return apiuser, nil
 
 }

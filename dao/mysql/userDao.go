@@ -9,11 +9,11 @@ import (
 
 type User struct {
 	gorm.Model
-	UserID   int64  `json:"userId" gorm:"user_id"`
-	Gender   int    `json:"gender" gorm:"gender"`
-	UserName string `json:"userName" gorm:"user_name"`
-	Password string `json:"password" gorm:"password"`
-	Email    string `json:"email" gorm:"email"`
+	UserID   int64  `json:"userId"`
+	Gender   int    `json:"gender"`
+	UserName string `json:"userName"`
+	Password string `json:"password"`
+	Email    string `json:"email"`
 }
 
 // SelectByUsername 通过username 来查询用户是否存在
@@ -23,7 +23,7 @@ func SelectByUsername(username string) User {
 	return user
 }
 
-// SelectById 通过username 来查询用户是否存在
+// SelectUserById  通过username 来查询用户是否存在
 func SelectUserById(id int) User {
 	var user User
 	db.Where("user_id=?", id).Find(&user)

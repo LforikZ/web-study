@@ -12,6 +12,10 @@ import (
 	"web-study/service"
 )
 
+// InsertComData
+// @Description 创建社区
+// @Author Zihao_Li 2023-01-28 15:52:44
+// @Param c
 func InsertComData(c *gin.Context) {
 	//1、处理请求参数
 	p := new(entity.ParamCommunity)
@@ -20,12 +24,12 @@ func InsertComData(c *gin.Context) {
 		fmt.Println(p)
 		zap.L().Error("InsertComData() with invalid param", zap.Error(err))
 		//判断err是不是
-		errors, ok := err.(validator.ValidationErrors)
+		er, ok := err.(validator.ValidationErrors)
 		if !ok {
 			controller.ResponseError(c, controller.CodeInvalidParam)
 			return
 		}
-		controller.ResponseErrorWithMsg(c, controller.CodeInvalidParam, errors.Translate(controller.Trans))
+		controller.ResponseErrorWithMsg(c, controller.CodeInvalidParam, er.Translate(controller.Trans))
 		return
 	}
 	//2、业务处理
@@ -46,6 +50,10 @@ func InsertComData(c *gin.Context) {
 	return
 }
 
+// GetCommunityList
+// @Description 获取所有社区
+// @Author Zihao_Li 2023-01-28 15:52:57
+// @Param c
 func GetCommunityList(c *gin.Context) {
 	list, err := service.GetCommunityList()
 	if err != nil {
@@ -57,6 +65,10 @@ func GetCommunityList(c *gin.Context) {
 	return
 }
 
+// GetCommunityById
+// @Description 根据id获取社区内容
+// @Author Zihao_Li 2023-01-28 15:53:20
+// @Param c
 func GetCommunityById(c *gin.Context) {
 	idstr := c.Param("id")
 	id, err := strconv.Atoi(idstr)

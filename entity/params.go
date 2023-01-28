@@ -24,7 +24,7 @@ type ParamListCommunity struct {
 }
 
 type ParamPostData struct {
-	PostID      int64  `json:"postID" `                         //帖子id
+	PostID      int64  `json:"postID,string" `                  //帖子id
 	AuthorID    int64  `json:"authorID"`                        //作者id
 	CommunityID int    `json:"communityID"  binding:"required"` //社区id
 	Title       string `json:"title"  binding:"required"`       //标题

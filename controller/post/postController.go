@@ -11,6 +11,10 @@ import (
 	"web-study/service"
 )
 
+// InsertPostData
+// @Description 上传帖子
+// @Author Zihao_Li 2023-01-28 14:10:22
+// @Param c
 func InsertPostData(c *gin.Context) {
 	//获取参数校验
 	p := new(entity.ParamPostData)
@@ -46,8 +50,15 @@ func InsertPostData(c *gin.Context) {
 	return
 }
 
+// GetPostList
+// @Description 获取多个帖子
+// @Author Zihao_Li 2023-01-28 14:11:03
+// @Param c
 func GetPostList(c *gin.Context) {
-	list, err := service.GetPostList()
+	//获取分页参数
+	page, size := controller.GetPageInfo(c)
+	//获取数据
+	list, err := service.GetPostList(page, size)
 	if err != nil {
 		fmt.Println(err)
 		controller.ResponseError(c, controller.CodeGetListFiled)
@@ -57,6 +68,10 @@ func GetPostList(c *gin.Context) {
 	return
 }
 
+// GetPostData
+// @Description  获取单个帖子内容
+// @Author Zihao_Li 2023-01-28 14:11:14
+// @Param c
 func GetPostData(c *gin.Context) {
 	idstr := c.Param("id")
 	id, err := strconv.Atoi(idstr)

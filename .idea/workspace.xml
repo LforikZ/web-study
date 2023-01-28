@@ -5,15 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60372a4a-986e-4f51-b433-4c3023b189bd" name="变更" comment="2023/1/27 zihao_Li">
+      <change afterPath="$PROJECT_DIR$/dao/mysql/pageConf.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/community/comController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/community/comController.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/mysql/comDao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/comDao.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/post/postController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/post/postController.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/request.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/request.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/translate.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/translate.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/user/userController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/user/userController.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dao/mysql/postDao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/postDao.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/mysql/userDao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/userDao.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entity/apis.go" beforeDir="false" afterPath="$PROJECT_DIR$/entity/apis.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entity/params.go" beforeDir="false" afterPath="$PROJECT_DIR$/entity/params.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/comService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/comService.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/postService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/postService.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_app.log" beforeDir="false" afterPath="$PROJECT_DIR$/web_app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/userService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/userService.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +51,7 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/controller/community/comController.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../goland_sdk/pkg/mod/github.com/gin-gonic/gin@v1.8.2/routergroup.go" root0="SKIP_INSPECTION" />
   </component>
   <component name="Make.Settings">
@@ -64,30 +69,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/desketop/git/gin-admin&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultGoTemplateProperty": "Go File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "go.import.settings.migrated": "true",
+    "last_opened_file_path": "D:/desketop/git/gin-admin",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "fileTemplates"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\desketop\gin\web-study\entity" />
@@ -98,14 +104,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Go 构建.go build web-study">
-    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
-      <module name="web-study" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
     <configuration name="go build web-study" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="web-study" />
       <working_directory value="$PROJECT_DIR$" />
@@ -113,15 +111,6 @@
       <package value="web-study" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$/main.go" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
-      <module name="web-study" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="DIRECTORY" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
       <method v="2" />
     </configuration>
     <configuration name="web-study/dao/mysql 中的 TestFindList" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -168,6 +157,17 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -176,6 +176,36 @@
             <State />
           </value>
         </entry>
+        <entry key="c1986ac5-fcad-4bf4-8dcb-00d0cc0362bb">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="c1986ac5-fcad-4bf4-8dcb-00d0cc0362bb" value="TOOL_WINDOW" />
       </map>
     </option>
   </component>

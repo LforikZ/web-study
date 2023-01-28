@@ -23,10 +23,26 @@ func CreatPost(data *entity.ParamPostData) (err error) {
 	return nil
 }
 
-func GetPostList() (lists []entity.ParamPostData, err error) {
-	lists, err = mysql.GetPostList()
+func GetPostList(page, size int) (lists []*entity.ApiPostData, err error) {
+	data, err := mysql.GetPostList(page, size)
 	if err != nil {
 		return nil, err
+	}
+	for _, datum := range data {
+		//根据用户id查用户信息
+		user := mysql.SelectUserById(int(datum.AuthorID))
+		//根据社区id查社区信息
+		community, err := mysql.FindCommunityById(datum.CommunityID)
+		if err != nil {
+			return lists, ErrorCommunityData
+		}
+
+		middle := &entity.ApiPostData{
+			AuthorName:     user.UserName,
+			ParamPostData:  datum,
+			ParamCommunity: community,
+		}
+		lists = append(lists, middle)
 	}
 	return lists, err
 }

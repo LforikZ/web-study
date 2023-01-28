@@ -13,7 +13,7 @@ import (
 	"strings"
 )
 
-// 定义一个全局翻译器T
+// Trans 定义一个全局翻译器T
 var Trans ut.Translator
 
 // InitTrans 初始化翻译器
