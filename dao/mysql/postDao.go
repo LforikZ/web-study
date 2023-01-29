@@ -32,7 +32,7 @@ func InsertPostData(data *entity.ParamPostData) error {
 
 func GetPostList(page, size int) (a []*entity.ParamPostData, err error) {
 	var post []Post
-	if result := db.Scopes(Paginate(page, size)).Find(&post); result.Error == sql.ErrNoRows {
+	if result := db.Scopes(Paginate(page, size)).Order("updated_at DESC").Find(&post); result.Error == sql.ErrNoRows {
 		zap.L().Warn("this is no post in db")
 		err = result.Error
 	}

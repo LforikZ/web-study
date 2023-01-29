@@ -18,5 +18,18 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="0@localhost" uuid="b271f97d-8ef4-49ae-9f2e-a47e01af2331">
+      <database-info product="Redis" version="5.0.14.1" jdbc-version="4.2" driver-name="Redis JDBC Driver" driver-version="1.2" dbms="REDIS" exact-version="5.0" exact-driver-version="1.2" />
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <secret-storage>master_key</secret-storage>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema">
+            <name qname="0" />
+            <name qname="1" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
   </component>
 </project>

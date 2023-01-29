@@ -4,20 +4,23 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60372a4a-986e-4f51-b433-4c3023b189bd" name="变更" comment="2023/1/27 zihao_Li">
-      <change afterPath="$PROJECT_DIR$/dao/mysql/pageConf.go" afterDir="false" />
+    <list default="true" id="60372a4a-986e-4f51-b433-4c3023b189bd" name="变更" comment="2023/1/28 zihao_Li">
+      <change afterPath="$PROJECT_DIR$/controller/vote/voteController.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dao/redis/keys.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dao/redis/voteDao.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/voteService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a22365df-596d-4ea6-9ae8-27406c48d123.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a22365df-596d-4ea6-9ae8-27406c48d123.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/community/comController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/community/comController.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/post/postController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/post/postController.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/request.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/request.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/translate.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/translate.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/user/userController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/user/userController.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dao/mysql/postDao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/postDao.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/mysql/userDao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/userDao.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/apis.go" beforeDir="false" afterPath="$PROJECT_DIR$/entity/apis.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/redis/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/redis/redis.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entity/params.go" beforeDir="false" afterPath="$PROJECT_DIR$/entity/params.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routes.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/postService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/postService.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/userService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/userService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app.log" beforeDir="false" afterPath="$PROJECT_DIR$/web_app.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +93,9 @@
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
-      "mysql"
+      "mysql",
+      "postgresql",
+      "redis"
     ]
   }
 }]]></component>
@@ -103,7 +108,7 @@
       <recent name="D:\desketop\gin\web-study\controller\community" />
     </key>
   </component>
-  <component name="RunManager" selected="Go 构建.go build web-study">
+  <component name="RunManager" selected="Go Build.go build web-study">
     <configuration name="go build web-study" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="web-study" />
       <working_directory value="$PROJECT_DIR$" />
@@ -145,11 +150,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go 构建.go build web-study" />
-        <item itemvalue="Go 测试.web-study/dao/mysql 中的 TestFindList" />
-        <item itemvalue="Makefile 目标.build" />
-        <item itemvalue="Makefile 目标.run" />
-        <item itemvalue="Makefile 目标.help" />
+        <item itemvalue="Go Build.go build web-study" />
       </list>
     </recent_temporary>
   </component>
@@ -215,7 +216,8 @@
     <MESSAGE value="2023/1/19 zihao_Li" />
     <MESSAGE value="2023/1/26 zihao_Li" />
     <MESSAGE value="2023/1/27 zihao_Li" />
-    <option name="LAST_COMMIT_MESSAGE" value="2023/1/27 zihao_Li" />
+    <MESSAGE value="2023/1/28 zihao_Li" />
+    <option name="LAST_COMMIT_MESSAGE" value="2023/1/28 zihao_Li" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

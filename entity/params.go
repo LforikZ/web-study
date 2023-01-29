@@ -30,3 +30,9 @@ type ParamPostData struct {
 	Title       string `json:"title"  binding:"required"`       //标题
 	Content     string `json:"content"  binding:"required"`     //内容
 }
+
+type ParamVoteData struct {
+	// UserID  从请求中获取当前用户
+	PostID    string `json:"postID" binding:"required"`               // 帖子id
+	Direction int    `json:"direction,string" binding:"oneof=1 0 -1"` // 赞成票（1） 反对票（-1） 取消投票（0）
+}

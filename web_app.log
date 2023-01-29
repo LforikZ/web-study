@@ -505,3 +505,39 @@
 {"level":"INFO","time":"2023-01-19T20:17:47.683+0800","caller":"logger/logger.go:79","msg":"/comunity/list","status":500,"method":"GET","path":"/comunity/list","query":"","ip":"::1","user-agent":"PostmanRuntime/7.30.0","errors":"","cost":0.0020262}
 {"level":"INFO","time":"2023-01-19T20:18:38.758+0800","caller":"web-study/main.go:85","msg":"Shutdown Server ..."}
 {"level":"INFO","time":"2023-01-19T20:18:38.758+0800","caller":"web-study/main.go:93","msg":"Server exiting"}
+{"level":"DEBUG","time":"2023-01-29T19:33:24.592+0800","caller":"web-study/main.go:35","msg":"logger init success...."}
+{"level":"DEBUG","time":"2023-01-29T19:33:27.589+0800","caller":"vote/voteController.go:39","msg":"service.PostVote(userID, p) failed","userID":5899827711840256,"postID":"9247323993411584","direction":1}
+{"level":"INFO","time":"2023-01-29T19:33:27.590+0800","caller":"logger/logger.go:79","msg":"/vote/change","status":200,"method":"POST","path":"/vote/change","query":"","ip":"::1","user-agent":"PostmanRuntime/7.30.0","errors":"","cost":0.0010261}
+{"level":"INFO","time":"2023-01-29T19:37:12.923+0800","caller":"web-study/main.go:85","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-01-29T19:37:12.923+0800","caller":"web-study/main.go:93","msg":"Server exiting"}
+{"level":"DEBUG","time":"2023-01-29T19:37:16.104+0800","caller":"web-study/main.go:35","msg":"logger init success...."}
+{"level":"DEBUG","time":"2023-01-29T19:37:18.279+0800","caller":"service/voteService.go:12","msg":"service.PostVote(userID, p) failed","userID":5899827711840256,"postID":"9247323993411584","direction":1}
+{"level":"ERROR","time":"2023-01-29T19:37:18.279+0800","caller":"vote/voteController.go:39","msg":"service.PostVote(userID, p) failed","error":"投票时间已过"}
+{"level":"INFO","time":"2023-01-29T19:37:18.280+0800","caller":"logger/logger.go:79","msg":"/vote/change","status":200,"method":"POST","path":"/vote/change","query":"","ip":"::1","user-agent":"PostmanRuntime/7.30.0","errors":"","cost":0.0013983}
+{"level":"DEBUG","time":"2023-01-29T19:38:05.353+0800","caller":"service/voteService.go:12","msg":"service.PostVote(userID, p) failed","userID":5899827711840256,"postID":"9966485778731008","direction":1}
+{"level":"ERROR","time":"2023-01-29T19:38:05.354+0800","caller":"vote/voteController.go:39","msg":"service.PostVote(userID, p) failed","error":"投票时间已过"}
+{"level":"INFO","time":"2023-01-29T19:38:05.354+0800","caller":"logger/logger.go:79","msg":"/vote/change","status":200,"method":"POST","path":"/vote/change","query":"","ip":"::1","user-agent":"PostmanRuntime/7.30.0","errors":"","cost":0.0012047}
+{"level":"INFO","time":"2023-01-29T19:40:17.235+0800","caller":"web-study/main.go:85","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-01-29T19:40:17.235+0800","caller":"web-study/main.go:93","msg":"Server exiting"}
+{"level":"DEBUG","time":"2023-01-29T19:40:21.420+0800","caller":"web-study/main.go:35","msg":"logger init success...."}
+{"level":"ERROR","time":"2023-01-29T19:40:54.477+0800","caller":"vote/voteController.go:39","msg":"service.PostVote(userID, p) failed","error":"投票时间已过"}
+{"level":"INFO","time":"2023-01-29T19:40:54.479+0800","caller":"logger/logger.go:79","msg":"/vote/change","status":200,"method":"POST","path":"/vote/change","query":"","ip":"::1","user-agent":"PostmanRuntime/7.30.0","errors":"","cost":29.7509201}
+{"level":"INFO","time":"2023-01-29T19:40:54.516+0800","caller":"web-study/main.go:85","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-01-29T19:40:54.517+0800","caller":"web-study/main.go:93","msg":"Server exiting"}
+{"level":"DEBUG","time":"2023-01-29T19:40:56.436+0800","caller":"web-study/main.go:35","msg":"logger init success...."}
+{"level":"ERROR","time":"2023-01-29T19:41:14.873+0800","caller":"vote/voteController.go:39","msg":"service.PostVote(userID, p) failed","error":"投票时间已过"}
+{"level":"INFO","time":"2023-01-29T19:41:14.874+0800","caller":"logger/logger.go:79","msg":"/vote/change","status":200,"method":"POST","path":"/vote/change","query":"","ip":"::1","user-agent":"PostmanRuntime/7.30.0","errors":"","cost":16.8039569}
+{"level":"INFO","time":"2023-01-29T19:41:21.689+0800","caller":"web-study/main.go:85","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-01-29T19:41:21.689+0800","caller":"web-study/main.go:93","msg":"Server exiting"}
+{"level":"DEBUG","time":"2023-01-29T19:48:48.578+0800","caller":"web-study/main.go:35","msg":"logger init success...."}
+{"level":"INFO","time":"2023-01-29T19:48:52.545+0800","caller":"logger/logger.go:79","msg":"/post/insert","status":200,"method":"POST","path":"/post/insert","query":"","ip":"::1","user-agent":"PostmanRuntime/7.30.0","errors":"","cost":0.0005164}
+{"level":"INFO","time":"2023-01-29T19:49:13.592+0800","caller":"logger/logger.go:79","msg":"/post/insert","status":200,"method":"POST","path":"/post/insert","query":"","ip":"::1","user-agent":"PostmanRuntime/7.30.0","errors":"","cost":0.008211}
+{"level":"INFO","time":"2023-01-29T19:52:35.674+0800","caller":"web-study/main.go:85","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-01-29T19:52:35.674+0800","caller":"web-study/main.go:93","msg":"Server exiting"}
+{"level":"DEBUG","time":"2023-01-29T19:52:39.064+0800","caller":"web-study/main.go:35","msg":"logger init success...."}
+{"level":"ERROR","time":"2023-01-29T19:52:42.965+0800","caller":"post/postController.go:44","msg":"CreatPost() detail","error":"Error 1062 (23000): Duplicate entry '小情歌' for key 'posts.idx_posts_title'"}
+{"level":"INFO","time":"2023-01-29T19:52:42.965+0800","caller":"logger/logger.go:79","msg":"/post/insert","status":200,"method":"POST","path":"/post/insert","query":"","ip":"::1","user-agent":"PostmanRuntime/7.30.0","errors":"","cost":0.0091358}
+{"level":"ERROR","time":"2023-01-29T19:53:18.415+0800","caller":"post/postController.go:44","msg":"CreatPost() detail","error":"WRONGTYPE Operation against a key holding the wrong kind of value"}
+{"level":"INFO","time":"2023-01-29T19:53:18.415+0800","caller":"logger/logger.go:79","msg":"/post/insert","status":200,"method":"POST","path":"/post/insert","query":"","ip":"::1","user-agent":"PostmanRuntime/7.30.0","errors":"","cost":0.0076811}
+{"level":"INFO","time":"2023-01-29T19:54:21.289+0800","caller":"web-study/main.go:85","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-01-29T19:54:21.289+0800","caller":"web-study/main.go:93","msg":"Server exiting"}

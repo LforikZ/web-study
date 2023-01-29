@@ -59,11 +59,11 @@ func InitTrans(locale string) (err error) {
 	return
 }
 
-// 去除提示信息的结构体名称   "ParamSignUp.repassword": "repassword为必填字段"  除去后 "repassword": "repassword为必填字段"
-//func removeTopStruct(fields map[string]string) map[string]string {
-//	res := map[string]string{}
-//	for field, err := range fields {
-//		res[field[strings.Index(field, ".")+1:]] = err
-//	}
-//	return res
-//}
+// RemoveTopStruct 去除提示信息的结构体名称   "ParamSignUp.repassword": "repassword为必填字段"  除去后 "repassword": "repassword为必填字段"
+func RemoveTopStruct(fields map[string]string) map[string]string {
+	res := map[string]string{}
+	for field, err := range fields {
+		res[field[strings.Index(field, ".")+1:]] = err
+	}
+	return res
+}

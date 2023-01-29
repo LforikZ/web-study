@@ -7,6 +7,7 @@ import (
 	"web-study/controller/community"
 	"web-study/controller/post"
 	"web-study/controller/user"
+	"web-study/controller/vote"
 	"web-study/middlewares"
 )
 
@@ -74,6 +75,12 @@ func Setup() *gin.Engine {
 		Post.GET("/list", post.GetPostList)
 		//单独查看一个帖子
 		Post.GET("/:id", post.GetPostData)
+	}
+
+	Vote := r.Group("/vote").Use(middlewares.JWTAuthMiddleware())
+	{
+		//投票
+		Vote.POST("/change", vote.VoteDataChange)
 	}
 
 	return r

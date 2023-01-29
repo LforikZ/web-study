@@ -2,7 +2,9 @@ package service
 
 import (
 	"errors"
+	"fmt"
 	"web-study/dao/mysql"
+	"web-study/dao/redis"
 	"web-study/entity"
 	"web-study/pkg/snowflake"
 )
@@ -15,10 +17,16 @@ var (
 func CreatPost(data *entity.ParamPostData) (err error) {
 	// 生成post id
 	data.PostID = snowflake.GenID()
-	// 保存数据库
+	// 保存redis
+	if err := redis.CreatPost(data.PostID); err != nil {
+		fmt.Println(err)
+		return err
+	}
+	// 保存至mysql
 	if err = mysql.InsertPostData(data); err != nil {
 		return err
 	}
+
 	// 返回
 	return nil
 }
