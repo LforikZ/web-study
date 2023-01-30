@@ -5,6 +5,7 @@ import (
 	"errors"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
+	"strconv"
 	"web-study/entity"
 )
 
@@ -15,7 +16,7 @@ type Post struct {
 	PostID      int64  `json:"postID,string" gorm:"not null;uniqueIndex"`    //帖子id
 	AuthorID    int64  `json:"authorID" gorm:"not null"`                     //作者id
 	CommunityID int    `json:"communityID" gorm:"not null"`                  //社区id
-	Title       string `json:"title" gorm:"size:20;default:'';not null"`     //标题
+	Title       string `json:"title" gorm:"size:200;default:'';not null"`    //标题
 	Content     string `json:"content" gorm:"size:8888;not null;default:''"` //内容
 }
 
@@ -57,16 +58,22 @@ func GetPostListByIDs(ids []string) (a []*entity.ParamPostData, err error) {
 	if len(ids) == 0 {
 		return a, ErrIDsNull
 	}
-	db.Where("post_id IN ?", ids).Find(&post)
-	for _, list := range post {
-		middleList := &entity.ParamPostData{
-			PostID:      list.PostID,
-			AuthorID:    list.AuthorID,
-			CommunityID: list.CommunityID,
-			Title:       list.Title,
-			Content:     list.Content,
+	db.Where("post_id IN (?)", ids).Find(&post)
+	postMap := make(map[string]Post)
+	for _, p := range post {
+		postMap[strconv.FormatInt(p.PostID, 10)] = p
+	}
+	for _, id := range ids {
+		if p, ok := postMap[id]; ok {
+			middleList := &entity.ParamPostData{
+				PostID:      p.PostID,
+				AuthorID:    p.AuthorID,
+				CommunityID: p.CommunityID,
+				Title:       p.Title,
+				Content:     p.Content,
+			}
+			a = append(a, middleList)
 		}
-		a = append(a, middleList)
 	}
 	return a, err
 }

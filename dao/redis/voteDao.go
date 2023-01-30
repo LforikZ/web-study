@@ -33,6 +33,7 @@ const (
 
 var (
 	ErrVoteTimePass = errors.New("投票时间已过")
+	ErrVoteSame     = errors.New("投票类型一致")
 )
 
 // VoteForPost
@@ -54,6 +55,10 @@ func VoteForPost(userID, postID string, value float64) error {
 	// 2、更新帖子分数
 	//查询当前用户对于当前帖子的投票记录
 	ov := client.ZScore(GetRedisKey(KeyPostVotedZsetPrefix+postID), userID).Val()
+	//如果此次投票的值与之前的值一致
+	if ov == value {
+		return ErrVoteSame
+	}
 	diff := value - ov
 
 	//加个事务，将2 和 3捆绑起来
@@ -95,4 +100,48 @@ func CreatPost(postID int64) error {
 
 	_, err := pipeline.Exec()
 	return err
+}
+
+// GetVoteYesNum
+// @Description 获取赞成票
+// @Author Zihao_Li 2023-01-30 17:22:36
+// @Param ids
+func GetVoteYesNum(ids []string) (data []int64, err error) {
+	pipeline := client.Pipeline()
+	for _, id := range ids {
+		key := GetRedisKey(KeyPostVotedZsetPrefix + id)
+		pipeline.ZCount(key, "1", "1")
+	}
+	cmders, err := pipeline.Exec()
+	if err != nil {
+		return nil, err
+	}
+	data = make([]int64, 0, len(cmders))
+	for _, cmder := range cmders {
+		v := cmder.(*redis.IntCmd).Val()
+		data = append(data, v)
+	}
+	return data, err
+}
+
+// GetVoteNoNum
+// @Description 获取反对票
+// @Author Zihao_Li 2023-01-30 17:23:25
+// @Param ids
+func GetVoteNoNum(ids []string) (data []int64, err error) {
+	pipeline := client.Pipeline()
+	for _, id := range ids {
+		key := GetRedisKey(KeyPostVotedZsetPrefix + id)
+		pipeline.ZCount(key, "-1", "-1")
+	}
+	cmders, err := pipeline.Exec()
+	if err != nil {
+		return nil, err
+	}
+	data = make([]int64, 0, len(cmders))
+	for _, cmder := range cmders {
+		v := cmder.(*redis.IntCmd).Val()
+		data = append(data, v)
+	}
+	return data, err
 }

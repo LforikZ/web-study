@@ -17,13 +17,13 @@ var (
 func CreatPost(data *entity.ParamPostData) (err error) {
 	// 生成post id
 	data.PostID = snowflake.GenID()
+	// 保存至mysql
+	if err = mysql.InsertPostData(data); err != nil {
+		return err
+	}
 	// 保存redis
 	if err := redis.CreatPost(data.PostID); err != nil {
 		fmt.Println(err)
-		return err
-	}
-	// 保存至mysql
-	if err = mysql.InsertPostData(data); err != nil {
 		return err
 	}
 
@@ -63,7 +63,12 @@ func GetPostListPlus(p *entity.ParamPostDataPlus) (lists []*entity.ApiPostData, 
 	if err != nil {
 		return nil, err
 	}
-	for _, datum := range data {
+	//提前查好投票数
+	voteData, err := redis.GetVoteYesNum(postIds)
+	if err != nil {
+		return nil, err
+	}
+	for id, datum := range data {
 		//根据用户id查用户信息
 		user := mysql.SelectUserById(int(datum.AuthorID))
 		//根据社区id查社区信息
@@ -74,6 +79,7 @@ func GetPostListPlus(p *entity.ParamPostDataPlus) (lists []*entity.ApiPostData, 
 
 		middle := &entity.ApiPostData{
 			AuthorName:     user.UserName,
+			VoteNum:        voteData[id],
 			ParamPostData:  datum,
 			ParamCommunity: community,
 		}
