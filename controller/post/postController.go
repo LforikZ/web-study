@@ -50,9 +50,36 @@ func InsertPostData(c *gin.Context) {
 	return
 }
 
-// GetPostList
+// GetPostListPlus
 // @Description 获取多个帖子
 // @Author Zihao_Li 2023-01-28 14:11:03
+// @Param c
+func GetPostListPlus(c *gin.Context) {
+	//GET请求 localhost:8081/post/list?page=1&size=1&order=time
+	p := &entity.ParamPostDataPlus{
+		Page:  1,
+		Size:  10,
+		Order: entity.OrderTime,
+	}
+	if err := c.ShouldBindQuery(p); err != nil {
+		zap.L().Error("c.ShouldBindQuery(p) failed", zap.Error(err))
+		controller.ResponseError(c, controller.CodeInvalidParam)
+		return
+	}
+	//获取数据
+	list, err := service.GetPostListPlus(p)
+	if err != nil {
+		fmt.Println(err)
+		controller.ResponseError(c, controller.CodeGetListFiled)
+		return
+	}
+	controller.ResponseSuccess(c, list)
+	return
+}
+
+// GetPostList
+// @Description 可以根据时间或者分数动态的获取列表
+// @Author Zihao_Li 2023-01-30 13:41:15
 // @Param c
 func GetPostList(c *gin.Context) {
 	//获取分页参数

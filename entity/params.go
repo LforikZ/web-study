@@ -1,5 +1,10 @@
 package entity
 
+const (
+	OrderTime  = "time"
+	OrderScore = "score"
+)
+
 // ParamSignUp 定义请求的参数结构体
 type ParamSignUp struct {
 	Username   string `json:"username" binding:"required"`
@@ -29,6 +34,11 @@ type ParamPostData struct {
 	CommunityID int    `json:"communityID"  binding:"required"` //社区id
 	Title       string `json:"title"  binding:"required"`       //标题
 	Content     string `json:"content"  binding:"required"`     //内容
+}
+type ParamPostDataPlus struct {
+	Page  int64  `form:"page"`
+	Size  int64  `form:"size"`
+	Order string `form:"order" binding:"required"`
 }
 
 type ParamVoteData struct {

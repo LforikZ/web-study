@@ -55,6 +55,33 @@ func GetPostList(page, size int) (lists []*entity.ApiPostData, err error) {
 	return lists, err
 }
 
+func GetPostListPlus(p *entity.ParamPostDataPlus) (lists []*entity.ApiPostData, err error) {
+	// 从redis中查询id列表
+	postIds, err := redis.GetPostIDsInOrder(p)
+	//根据 postIds 去mysql数据库查询
+	data, err := mysql.GetPostListByIDs(postIds)
+	if err != nil {
+		return nil, err
+	}
+	for _, datum := range data {
+		//根据用户id查用户信息
+		user := mysql.SelectUserById(int(datum.AuthorID))
+		//根据社区id查社区信息
+		community, err := mysql.FindCommunityById(datum.CommunityID)
+		if err != nil {
+			return lists, ErrorCommunityData
+		}
+
+		middle := &entity.ApiPostData{
+			AuthorName:     user.UserName,
+			ParamPostData:  datum,
+			ParamCommunity: community,
+		}
+		lists = append(lists, middle)
+	}
+	return lists, err
+}
+
 func GetPostDataById(id int) (apiData *entity.ApiPostData, err error) {
 	data, err := mysql.GetPostData(id)
 	if data.PostID == 0 {

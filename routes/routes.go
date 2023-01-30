@@ -43,7 +43,6 @@ func Setup() *gin.Engine {
 	//测试
 	r.GET("/test", middlewares.JWTAuthMiddleware(), func(context *gin.Context) {
 		//如果是登录用户，判断请求头中是否有 有效的JWT
-
 		context.JSON(200, gin.H{
 			"msg": "测试成功",
 		})
@@ -75,6 +74,8 @@ func Setup() *gin.Engine {
 		Post.GET("/list", post.GetPostList)
 		//单独查看一个帖子
 		Post.GET("/:id", post.GetPostData)
+		//获取所有帖子 plus版（根据时间或者分数来进行获取）
+		Post.GET("/list_plus", post.GetPostListPlus)
 	}
 
 	Vote := r.Group("/vote").Use(middlewares.JWTAuthMiddleware())

@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60372a4a-986e-4f51-b433-4c3023b189bd" name="变更" comment="2023/1/29 zihao_Li" />
+    <list default="true" id="60372a4a-986e-4f51-b433-4c3023b189bd" name="变更" comment="2023/1/29 zihao_Li">
+      <change afterPath="$PROJECT_DIR$/dao/redis/postRedisDao.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/post/postController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/post/postController.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/mysql/postDao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/postMysqlDao.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/params.go" beforeDir="false" afterPath="$PROJECT_DIR$/entity/params.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routes.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/postService.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/postService.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +56,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2Jr77YMIPrgCAEjLDnkGJExIopD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -72,7 +81,7 @@
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
@@ -101,7 +110,7 @@
       <filePath value="$PROJECT_DIR$/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="web-study/dao/mysql 中的 TestFindList" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="web-study/dao/mysql 中的 TestGetPostListByIDs1" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="web-study" />
       <working_directory value="$PROJECT_DIR$/dao/mysql" />
       <root_directory value="$PROJECT_DIR$" />
@@ -110,13 +119,19 @@
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestFindList\E$" />
+      <pattern value="^\QTestGetPostListByIDs1\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="build" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/Makefile" target="build" workingDirectory="" arguments="">
-        <envs />
-      </makefile>
+    <configuration name="web-study/dao/mysql 中的 TestGetPostListByIDs1/1" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="web-study" />
+      <working_directory value="$PROJECT_DIR$/dao/mysql" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="web-study/dao/mysql" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestGetPostListByIDs1\E$/^\Q1\E$" />
       <method v="2" />
     </configuration>
     <configuration name="help" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
@@ -131,6 +146,13 @@
       </makefile>
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go 构建.go build web-study" />
+        <item itemvalue="Go 测试.web-study/dao/mysql 中的 TestGetPostListByIDs1/1" />
+        <item itemvalue="Go 测试.web-study/dao/mysql 中的 TestGetPostListByIDs1" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,5 +222,16 @@
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/dao/redis/postRedisDao.go</url>
+          <line>11</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

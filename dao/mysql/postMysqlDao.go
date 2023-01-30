@@ -2,10 +2,13 @@ package mysql
 
 import (
 	"database/sql"
+	"errors"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 	"web-study/entity"
 )
+
+var ErrIDsNull = errors.New("ids为空值")
 
 type Post struct {
 	gorm.Model
@@ -36,6 +39,25 @@ func GetPostList(page, size int) (a []*entity.ParamPostData, err error) {
 		zap.L().Warn("this is no post in db")
 		err = result.Error
 	}
+	for _, list := range post {
+		middleList := &entity.ParamPostData{
+			PostID:      list.PostID,
+			AuthorID:    list.AuthorID,
+			CommunityID: list.CommunityID,
+			Title:       list.Title,
+			Content:     list.Content,
+		}
+		a = append(a, middleList)
+	}
+	return a, err
+}
+
+func GetPostListByIDs(ids []string) (a []*entity.ParamPostData, err error) {
+	var post []Post
+	if len(ids) == 0 {
+		return a, ErrIDsNull
+	}
+	db.Where("post_id IN ?", ids).Find(&post)
 	for _, list := range post {
 		middleList := &entity.ParamPostData{
 			PostID:      list.PostID,
