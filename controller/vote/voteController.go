@@ -10,10 +10,17 @@ import (
 	"web-study/service"
 )
 
-// VoteDataChange
-// @Description 实现投票功能
-// @Author Zihao_Li 2023-01-29 17:06:38
-// @Param c
+// VoteDataChange 投票帖子接口
+// @Summary 投票帖子接口
+// @Description 可以投喜欢或者讨厌票
+// @Tags 帖子相关接口
+// @Accept application/json
+// @Produce application/json
+// @Param Authorization header string false "Bearer 用户令牌"
+// @Param object query entity.ParamVoteData true "查询参数"
+// @Security ApiKeyAuth
+// @Success 200 {object} _ResponseVote
+// @Router /vote/change [post]
 func VoteDataChange(c *gin.Context) {
 	// 参数校验
 	p := new(entity.ParamVoteData)

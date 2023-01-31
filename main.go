@@ -18,6 +18,21 @@ import (
 	"web-study/settings"
 )
 
+// @title gin学习项目
+// @version 1.0
+// @description 这是一个关于帖子的发布编写内容
+// @termsOfService http://swagger.io/terms/
+
+// @contact.name 这里写联系人信息
+// @contact.url http://www.swagger.io/support
+// @contact.email support@swagger.io
+
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+
+// @host 8081
+// @BasePath /
+
 func main() {
 	//1.加载配置
 	if err := settings.Init(); err != nil {
